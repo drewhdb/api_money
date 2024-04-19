@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Consulta API Dicionário Aberto</title>
+    </head>
+    <body>
+        <div>
+            <h1>Consulta API Dicionário Aberto</h1>
+            <input type="text" id="inputPalavra" placeholder="Digite aqui uma palavra">
+            <button onClick="trataConsultarBtn()">Consultar</button>
+            <button onClick="trataLimparBtn()">Limpar</button>
+            <div style="margin-top:15px"id="loadingDiv"></div>
+            <p id="wordResponse"></p>
+        </div>
+
+
+        <script>
+            function trataConsultarBtn() {
+                // Apresenta GIF de "loading"
+                document.getElementById('loadingDiv').innerHTML = '<img id="loadingImg" style="width:30px" src="https://i.gifer.com/ZKZg.gif">';
+
+                limpaResultados();
+                
+                const palavra = document.getElementById("inputPalavra").value;
+                const urlWord = `https://api.dicionario-aberto.net/word/${palavra}`;
+                fetch(urlWord, {
+                    method : "GET",
+                })
+                .then( (resp) => resp.json() )
+                .then( (data) => {
+                    //tratar o resultado "data" no formato json
+                    apresentaResultadoWord(data);
+                })
+
+            }
+
+            function apresentaResultadoWord(data) {
+                // Remove GIF de "loading"
+                document.getElementById('loadingDiv').innerHTML = '';
+
+                var conteudo;
+                if(data.length == 0) {
+                    conteudo = 'Não foram encontradas definições para este termo!'
+                }
+                else {
+                    conteudo = '<strong>Definições:</strong><br><br>';
+                    for (let index = 0; index < data.length; index++) {
+                        const definicao = data[index];
+                        conteudo += definicao.xml + '<br><br>';
+                    }
+                }
+                const elem = document.getElementById('wordResponse');
+                elem.innerHTML = conteudo;
+            }
+
+            function trataLimparBtn() {
+                limpaInputs();
+                limpaResultados();
+            }
+
+            function limpaInputs() {
+                document.getElementById("inputPalavra").value = '';
+            }
+
+            function limpaResultados() {
+                document.getElementById("wordResponse").innerHTML = ''
+            }
+
+        </script>
+    </body>
+
+</html>
