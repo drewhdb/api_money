@@ -18,8 +18,15 @@ footer {
 
 .container {
     display: grid;
-    grid-template-columns: 3;
+    grid-template-columns: repeat(3, 20em);
+    justify-content: center;
 }
+
+.container > fieldset {
+    margin: 0 10px;
+    max-width: 300px;
+}
+
 
 .container_itens {
 
@@ -40,13 +47,12 @@ footer {
     background-color: #c49003b2;
 }
 
-input[type="date"], input[type="text"] {
+input[type="date"], input[type="text"], select {
     background-color: rgba(220, 220, 220, 0.5);
-    border: 1px rgba(100, 100, 100, 1) solid;
+    border: 1px black solid;
     height: 2em;
     width: 12em;
     text-align: center;
-    margin: 0 0.5em 0.3em 0;
 }
 
 /* Estilo do rótulo da caixa de seleção */
@@ -55,15 +61,13 @@ input[type="date"], input[type="text"] {
 }
   
 /* Estilo do checkbox oculto */
-.last {
+input[type="checkbox"] {
     cursor: pointer;
+    border: 1px rgba(100, 100, 100, 1) solid;
+    height: 2em;
+    width: 12em;
+    text-align: center;
 }
-  
-/* Estilo do rótulo da caixa de seleção quando o checkbox está marcado */
-.last:checked + .checkbox-label {
-    color: #009688; /* Cor do texto quando ativo */
-}
-  
 
 fieldset{
     padding: 0;
@@ -72,4 +76,11 @@ fieldset{
     height: auto;
     display: inline-block;
     border: none;
+}
+
+.consultar {
+    margin-top: 1em;
+    height: 2.2em;
+    width: 12.4em;
+    background-color: green;
 }
