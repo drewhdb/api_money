@@ -1,0 +1,35 @@
+/* === areas === */
+header, footer {
+    width: 100%;
+    margin: 0;
+    padding: 1em;
+}
+
+header {
+    background-color: goldenrod;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+.container {
+    background-color: tomato;
+}
+
+.container_itens {
+
+}
+
+/* === itens === */
+
+* {
+    font-family: 'nurito';
+    color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    
+}
