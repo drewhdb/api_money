@@ -1,7 +1,6 @@
 # api_money
-
-canva: 
-https://economia.awesomeapi.com.br/json/last/BTC-BRL
+canva:
+https://www.canva.com/design/DAGAzEtRNNs/ktNC8Usx_5oO9jaSO97xgA/edit
 
 Figma:
 https://www.figma.com/file/qFDMqgn0u2LNF5m0qc9bMi/Figma-basics?type=design&node-id=1669%3A162202&mode=design&t=Hu4FmsiNEZ4OVln0-1,
@@ -15,3 +14,7 @@ https://www.figma.com/file/qFDMqgn0u2LNF5m0qc9bMi/Figma-basics?type=design&node-
  - organizar a url conforme filtros;
  - acionar api e pegar dados
  - tratar dados retornados em uma lista
+
+possíveis apis:
+https://economia.awesomeapi.com.br/json/daily/USD-BRL?start_date=20240101&end_date=20240409
+https://economia.awesomeapi.com.br/json/last/BTC-BRL
