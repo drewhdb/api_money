@@ -19,12 +19,29 @@
     </header>
 
     <div class="container">
-        <input type="text" id="inputPalavra" placeholder="Digite aqui uma palavra">
-        <input type="text" id="inputPalavra" placeholder="Digite aqui uma palavra">
-        <input type="text" id="inputPalavra" placeholder="Digite aqui uma palavra">
-        <input type="text" id="inputPalavra" placeholder="Digite aqui uma palavra">
-        <input type="text" id="inputPalavra" placeholder="Digite aqui uma palavra">
-        <button onClick="trataConsultarBtn()">Consultar</button>
+        <fieldset>
+            <legend>DE:</legend>
+            <input type="text" id="code">
+        </fieldset>
+        <fieldset>
+            <legend>PARA:</legend>
+            <input type="text" id="codein">
+        </fieldset>
+        <fieldset>
+            <legend>PERIODO:</legend>
+            <input type="date" id="start_date">
+        </fieldset>
+        <fieldset>
+            <legend>ULTIMO:</legend>
+            <input type="checkbox" id="last" class="last">
+        </fieldset>
+
+        <button onClick="trataConsultarBtn()" class="consultar">Consultar</button>
+
+        <fieldset>
+            <legend>ATÉ:</legend>
+            <input type="date" id="end_date">
+        </fieldset>
 
     </div>
 

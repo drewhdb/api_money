@@ -35,3 +35,41 @@ footer {
     align-items: center;
     margin: 0;
 }
+
+::selection{
+    background-color: #c49003b2;
+}
+
+input[type="date"], input[type="text"] {
+    background-color: rgba(220, 220, 220, 0.5);
+    border: 1px rgba(100, 100, 100, 1) solid;
+    height: 2em;
+    width: 12em;
+    text-align: center;
+    margin: 0 0.5em 0.3em 0;
+}
+
+/* Estilo do rótulo da caixa de seleção */
+.checkbox-label {
+    cursor: pointer;
+}
+  
+/* Estilo do checkbox oculto */
+.last {
+    cursor: pointer;
+}
+  
+/* Estilo do rótulo da caixa de seleção quando o checkbox está marcado */
+.last:checked + .checkbox-label {
+    color: #009688; /* Cor do texto quando ativo */
+}
+  
+
+fieldset{
+    padding: 0;
+    margin: 0;
+    width: 0;
+    height: auto;
+    display: inline-block;
+    border: none;
+}
