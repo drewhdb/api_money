@@ -1,8 +1,8 @@
 /* === areas === */
-header, footer {
+header, footer, .container, .container_itens {
     width: 100%;
     margin: 0;
-    padding: 1em;
+    padding: 1em 0;
 }
 
 header {
@@ -12,10 +12,13 @@ header {
 footer {
     background-color: black;
     color: white;
+    position: fixed;
+    bottom: 0;
 }
 
 .container {
-    background-color: tomato;
+    display: grid;
+    grid-template-columns: 3;
 }
 
 .container_itens {
@@ -31,5 +34,4 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 0;
-    
 }
