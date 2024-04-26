@@ -1,26 +1,30 @@
 //listar as moedas no select
 const URLlistaMoedas = 'https://economia.awesomeapi.com.br/json/available/uniq';
-let listaMoedas;
+var listaMoedas;
 
 fetch(URLlistaMoedas, {
     method : "GET",
 })
 .then( (resp) => resp.json() )
 .then( (data) => {
-    //tratar o resultado "data" no formato json
-    listaMoedas = [data];
+    listaMoedas = Object.keys(data);
+    for (var index = 0; index < listaMoedas.length; index++) {
+    }
 })
 
-// testar se os tipos de money estão ok
-// if (de & para){ 
+var de = document.getElementById('code');
+var para = document.getElementById('codein');
+var periodo = document.getElementById('start_date');
+var ate = document.getElementById('end_date');
+var ultimo = document.getElementById('last');
 
-//     if () {
-//         //  se last estiver ativo
-        
-//     } else{
-//         //testa se o periodo e o até está ok
 
-//     }
-// } else {
-//     // erro
-// }
+//pegar a função do sor pra depois do submit da consulta executar isso
+function confereLast() {
+    if (ultimo.checked == true) {
+        //se last estiver ativo
+        console.log('oiii');
+    } else{
+        //testa se o periodo e o até está ok
+    }
+}
