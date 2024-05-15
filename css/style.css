@@ -1,4 +1,8 @@
 /* === areas === */
+body {
+    padding-bottom: 4em;
+}
+
 header, footer, .container, .container_itens {
     width: 100%;
     margin: 0;
@@ -17,19 +21,13 @@ footer {
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(3, 20em);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .container > fieldset {
-    margin: 0 10px;
-    max-width: 300px;
-}
-
-
-.container_itens {
-
+    flex: 2 0 27%;
 }
 
 /* === itens === */
@@ -83,4 +81,32 @@ fieldset{
     height: 2.2em;
     width: 12.4em;
     background-color: green;
+}
+
+.container_itens {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itens {
+    flex: 1 0 40%; /* Isso divide o espaço em duas colunas */
+    height: 2em;
+    background-color: rgb(110, 110, 190);
+    box-sizing: border-box; /* Isso garante que a largura inclua padding e bordas */
+    padding: 5px; /* Adicione algum espaço interno para separar os itens */
+    margin: 5px; /* Adicione algum espaço externo entre os itens */
+}
+
+@media (max-width: 900px) {
+    .itens {
+        flex-basis: 90%; /* Altera a base flexível para 100%, tornando-a uma única coluna */
+    }
+
+    .container > fieldset {
+        flex-basis: 100%; /* Altera a base flexível para 100%, tornando-a uma única coluna */
+    }
+
+    input[type="date"], input[type="text"], select {
+        width: 70%;
+    }
 }
