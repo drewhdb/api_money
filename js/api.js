@@ -21,22 +21,23 @@ new Vue({
     },
     methods: {
         pegaFiltros() {
-            const de = document.getElementById('code').value;
-            const para = document.getElementById('codein').value;
             const ultimo = document.getElementById('last').checked;
 
             let url;
-            if (ultimo) {
+            if (document.getElementById('last').checked) {
                 // se last estiver ativo
-                url = `https://economia.awesomeapi.com.br/json/last/${de}-${para}`;
+                url = criaUrlUltimo(document.getElementById('code').value, document.getElementById('codein').value):
             } else {
-                const periodo = document.getElementById('start_date').value;
-                const ate = document.getElementById('end_date').value;
-
-                url = `https://economia.awesomeapi.com.br/json/daily/${de}-${para}?start_date=${periodo}&end_date=${ate}`;
+                url = criaUrl(document.getElementById('code').value, document.getElementById('codein').value, document.getElementById('start_date').value, document.getElementById('end_date').value);
             }
 
             this.pegaDados(url);
+        },
+        criaUrl(code, codein, start_date, end_date){
+            return "";
+        },
+        criaUrlUltimo(code, codein){
+            return "";
         },
         pegaDados(url) {
             fetch(url, {method: "GET",})
