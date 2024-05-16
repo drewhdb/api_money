@@ -34,10 +34,16 @@ new Vue({
             this.pegaDados(url);
         },
         criaUrl(code, codein, start_date, end_date){
-            return "";
+            //https://economia.awesomeapi.com.br/json/daily/USD-BRL?start_date=20240101&end_date=20240409 
+
+            start_date = start_date.replace(/-/g, "");
+            end_date = end_date.replace(/-/g, "");
+
+            return 'https://economia.awesomeapi.com.br/json/daily/?{code}-?{codein}?start_date=?{start_date}&end_date=?{end_date}';
         },
         criaUrlUltimo(code, codein){
-            return "";
+            //https://economia.awesomeapi.com.br/json/last/BTC-BRL
+            return 'https://economia.awesomeapi.com.br/json/last/?{code}-?{codein}';
         },
         pegaDados(url) {
             fetch(url, {method: "GET",})
