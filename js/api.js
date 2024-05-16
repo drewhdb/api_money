@@ -21,16 +21,14 @@ new Vue({
     },
     methods: {
         pegaFiltros() {
-            const ultimo = document.getElementById('last').checked;
-
             let url;
             if (document.getElementById('last').checked) {
                 // se last estiver ativo
-                url = criaUrlUltimo(document.getElementById('code').value, document.getElementById('codein').value):
+                url = criaUrlUltimo(document.getElementById('code').value, document.getElementById('codein').value);
             } else {
                 url = criaUrl(document.getElementById('code').value, document.getElementById('codein').value, document.getElementById('start_date').value, document.getElementById('end_date').value);
             }
-
+            console.log(url);
             this.pegaDados(url);
         },
         criaUrl(code, codein, start_date, end_date){
@@ -49,7 +47,7 @@ new Vue({
             fetch(url, {method: "GET",})
             .then(resp => resp.json())
             .then(data => {
-                console.log(Object.keys(data).map(key => ({ key: key, text: data[key] })));
+               console.log(Object.keys(data).map(key => ({ key: key, text: data[key] })));
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
     
