@@ -23,11 +23,21 @@ footer {
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around; /* Alinhar elementos ao redor do centro */
 }
 
-.container > fieldset {
-    flex: 2 0 27%;
+.container > fieldset, .container > div {
+    flex: 1 0 30%; /* Defina a largura dos elementos de forma que caibam três colunas */
+    margin: 10px; /* Adicione margens para espaçamento entre os elementos */
+}
+
+.inline-fields {
+    display: flex; /* Define o display flex para que os elementos fiquem em linha */
+    align-items: center; /* Alinha os elementos verticalmente ao centro */
+}
+
+.inline-fields legend {
+    margin-right: 10px; /* Adiciona uma margem à direita para separar a legenda do input */
 }
 
 /* === itens === */
@@ -45,26 +55,30 @@ footer {
     background-color: #c49003b2;
 }
 
-input[type="date"], input[type="text"], select {
-    background-color: rgba(220, 220, 220, 0.5);
+input[type="date"], input[type="text"], input[type="number"], select{
+    background-color: #ffbb00b2;
     border: 1px black solid;
     height: 2em;
     width: 12em;
     text-align: center;
 }
-
-/* Estilo do rótulo da caixa de seleção */
-.checkbox-label {
+  
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-top: 0.3em;
+    margin-bottom: -0.8em;
+    width: 1.99em;
+    height: 1.99em;
+    background-color: #ffbb00b2;
+    border-radius: 4px;
+    border: 1px solid black;
     cursor: pointer;
 }
-  
-/* Estilo do checkbox oculto */
-input[type="checkbox"] {
-    cursor: pointer;
-    border: 1px rgba(100, 100, 100, 1) solid;
-    height: 2em;
-    width: 12em;
-    text-align: center;
+
+input[type="checkbox"]:checked {
+    background-color: green;
 }
 
 fieldset{
@@ -77,9 +91,10 @@ fieldset{
 }
 
 .consultar {
-    margin-top: 1em;
-    height: 2.2em;
-    width: 12.4em;
+    border: black 1px solid;
+    margin-top: 2em;
+    height: 2em;
+    width: 16em;
     background-color: green;
 }
 

@@ -8,7 +8,6 @@
  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="shortcut icon" href="./imagem/icon.png" type="image/x-icon">
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <title>Money</title>
@@ -22,19 +21,27 @@
         <fieldset>
             <legend>DE:</legend>
             <select id="code">
+                <option value="BRL" id="BRL">BRL - Real Brasileiro</option>
                 <option v-for="item in opcoes" :value="item.key" :key="item.key">{{ item.key }} - {{ item.text }}</option>
             </select>
         </fieldset>
         <fieldset>
             <legend>PARA:</legend>
             <select id="codein">
+                <option value="BRL" id="BRL">BRL - Real Brasileiro</option>
                 <option v-for="item in opcoes" :value="item.key" :key="item.key">{{ item.key }} - {{ item.text }}</option>
             </select>
         </fieldset>
-        <fieldset>
-            <legend>ULTIMO:</legend>
-            <input type="checkbox" id="last" v-model="ultimoAtivo">
-        </fieldset>
+        <div>
+            <fieldset>
+                <legend>ULTIMO:</legend>
+                <input type="checkbox" id="last" v-model="ultimoAtivo">
+            </fieldset>
+            <fieldset>
+                <legend>DIAS:</legend>
+                <input value=1 type="number" id="dias" min="1">
+            </fieldset>
+        </div>
         <fieldset>
             <legend>PERIODO:</legend>
             <input type="date" id="start_date" :disabled="ultimoAtivo" :style="{ 'background-color': ultimoAtivo ? 'grey' : '' }" required>
@@ -48,10 +55,11 @@
         </fieldset>
     </div>
 
+    <p>{{ name }}</p>
     <hr>
     <div class="container_itens">
         <div v-for="item in listaMoedas" class="itens">
-            <p :key="item.id">{{item.text}}</p>
+            <p> R$ {{item.low}} - {{item.high}} || {{item.date}}</p>
         </div>
     </div>
 
