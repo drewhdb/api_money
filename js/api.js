@@ -26,18 +26,14 @@ new Vue({
                 url = this.criaUrlDias(document.getElementById('code').value, document.getElementById('codein').value, document.getElementById('dias').value);
             
             } else {
-                url = this.criaUrl(document.getElementById('code').value, document.getElementById('codein').value, document.getElementById('start_date').value, document.getElementById('end_date').value);
+                url = this.criaUrl(document.getElementById('code').value, document.getElementById('codein').value, document.getElementById('start_date').value);
             }
             console.log(url);
             this.pegaDados(url);
         },
-        criaUrl(code, codein, start_date, end_date){
+        criaUrl(code, codein, date){
             //https://economia.awesomeapi.com.br/json/daily/USD-BRL?start_date=20240101&end_date=20240409 
-
-            start_date = start_date.replace(/-/g, "");
-            end_date = end_date.replace(/-/g, "");
-
-            return 'https://economia.awesomeapi.com.br/json/daily/' + code + '-' + codein + '?start_date=' +  start_date + '&end_date=' + end_date;
+            return 'https://economia.awesomeapi.com.br/json/daily/' + code + '-' + codein + '?start_date=' +  date.replace(/-/g, "") + '&end_date=' + date.replace(/-/g, "");
         },
         criaUrlUltimo(code, codein){
             //https://economia.awesomeapi.com.br/json/last/BTC-BRL
@@ -53,20 +49,25 @@ new Vue({
             .then(resp => resp.json())
             .then(data => {
                 var lista = Object.keys(data).map(key => ({ key: key, text: data[key] }));
-                cont = 0;
+
+                if (lista.length == 0){
+                    this.listaMoedas = [{'retorno' : 'Erro: Não encontrado'}];
+                }
+
                 for (var i = 0; i < lista.length; i++) {
                     item = lista[i]['text'];
-                    if(cont == 0){this.name = item['name']; cont++;}
-
-                    let low = item['low'];
-                    let high = item['high'];
-                    let timestamp = item['timestamp'];
-                    obj = {'low': low, 'high': high, 'date': new Date(timestamp*1000).toLocaleDateString("pt-BR")};
                     
-                    this.listaMoedas.push(obj);
-                }
-                console.log(this.listaMoedas);
+                    if(item['name'] == undefined && this.name == ''){
+                        i = lista.length;
+                        this.listaMoedas.push({'retorno' :  'Erro ' + lista[1]['text'] + ' : ' + lista[2]['text'] + ' (' + lista[0]['text'] + ').' });
+                    } else{       
+                        this.name = lista[0]['text']['name'];
 
+                        this.listaMoedas.push({'retorno' : 
+                        `$ ${item['low']} - ${item['high']} || ${new Date(item['timestamp']*1000).toLocaleDateString("pt-BR")}`
+                        });
+                    }
+                }
             })
             .catch(error => console.error('Erro ao buscar dados:', error));
     

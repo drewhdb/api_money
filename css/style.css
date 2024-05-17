@@ -61,6 +61,7 @@ input[type="date"], input[type="text"], input[type="number"], select{
     height: 2em;
     width: 12em;
     text-align: center;
+    cursor: pointer;
 }
   
 input[type="checkbox"] {
@@ -71,14 +72,13 @@ input[type="checkbox"] {
     margin-bottom: -0.8em;
     width: 1.99em;
     height: 1.99em;
-    background-color: #ffbb00b2;
     border-radius: 4px;
     border: 1px solid black;
     cursor: pointer;
 }
 
 input[type="checkbox"]:checked {
-    background-color: green;
+    background-color: #ffbb00b2;
 }
 
 fieldset{
@@ -95,7 +95,8 @@ fieldset{
     margin-top: 2em;
     height: 2em;
     width: 16em;
-    background-color: green;
+    cursor: pointer;
+    background-color: #b68601;
 }
 
 .container_itens {
@@ -106,10 +107,16 @@ fieldset{
 .itens {
     flex: 1 0 40%; /* Isso divide o espaço em duas colunas */
     height: 2em;
-    background-color: rgb(110, 110, 190);
+    background-color: rgba(192, 25, 103, 0.685);
     box-sizing: border-box; /* Isso garante que a largura inclua padding e bordas */
     padding: 5px; /* Adicione algum espaço interno para separar os itens */
     margin: 5px; /* Adicione algum espaço externo entre os itens */
+}
+
+.legenda {
+    background-color: wheat;
+    display: block;
+    padding: 1em;
 }
 
 @media (max-width: 900px) {

@@ -14,7 +14,7 @@
 </head>
 <body><div id="app">
     <header>
-        <h1>Consulta API Dicionário Aberto</h1>
+        <h1>Consulta moedas</h1>
     </header>
 
     <div class="container">
@@ -32,34 +32,31 @@
                 <option v-for="item in opcoes" :value="item.key" :key="item.key">{{ item.key }} - {{ item.text }}</option>
             </select>
         </fieldset>
-        <div>
-            <fieldset>
-                <legend>ULTIMO:</legend>
-                <input type="checkbox" id="last" v-model="ultimoAtivo">
-            </fieldset>
-            <fieldset>
-                <legend>DIAS:</legend>
-                <input value=1 type="number" id="dias" min="1">
-            </fieldset>
-        </div>
         <fieldset>
             <legend>PERIODO:</legend>
-            <input type="date" id="start_date" :disabled="ultimoAtivo" :style="{ 'background-color': ultimoAtivo ? 'grey' : '' }" required>
+            <input type="date" id="start_date" :disabled="ultimoAtivo" :style="{ 'background-color': ultimoAtivo ? 'grey' : '', 'cursor' : ultimoAtivo ? 'auto' : 'pointer' }" required>
         </fieldset>
         <fieldset>
-            <legend>ATÉ:</legend>
-            <input type="date" id="end_date" :disabled="ultimoAtivo" :style="{ 'background-color': ultimoAtivo ? 'grey' : '' }" required>
+            <legend>ULTIMO:</legend>
+            <input type="checkbox" id="last" v-model="ultimoAtivo">
         </fieldset>
         <fieldset>
-            <button v-on:click="pegaFiltros" class="consultar">consultar</button>
+            <legend>DIAS:</legend>
+            <input value=1 type="number" id="dias" min="1" max="360" :disabled="!ultimoAtivo" :style="{ 'background-color': !ultimoAtivo ? 'grey' : '' , 'cursor' : !ultimoAtivo ? 'auto' : 'pointer'}">
+        </fieldset>
+        <fieldset>
+            <button v-on:click="pegaFiltros" class="consultar">CONSULTAR</button>
         </fieldset>
     </div>
-
-    <p>{{ name }}</p>
     <hr>
+    <div>
+        <p class="legenda">Valor mínimo - valor máximo || data da consulta</p>
+    </div>
+    <hr>
+    <p>{{ name }}</p>
     <div class="container_itens">
         <div v-for="item in listaMoedas" class="itens">
-            <p> R$ {{item.low}} - {{item.high}} || {{item.date}}</p>
+            <p>{{item.retorno}}</p>
         </div>
     </div>
 
