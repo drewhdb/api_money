@@ -45,6 +45,7 @@ new Vue({
         },
         pegaDados(url) {
             this.listaMoedas = [];
+            this.name = '';
             fetch(url, {method: "GET",})
             .then(resp => resp.json())
             .then(data => {
@@ -56,6 +57,7 @@ new Vue({
 
                 for (var i = 0; i < lista.length; i++) {
                     item = lista[i]['text'];
+                    console.log(lista)
                     
                     if(item['name'] == undefined && this.name == ''){
                         i = lista.length;
